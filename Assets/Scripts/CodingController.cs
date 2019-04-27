@@ -110,6 +110,25 @@ public static class CodingController
 		public string EncodeMethod(string input) => Convert.ToBase64String(Encoding.ASCII.GetBytes(input));
 		public string DecodeMethod(string input) => Encoding.ASCII.GetString(Convert.FromBase64String(input));
 	}
+
+	class ShiftBitsMethodV2 : IMethod
+	{
+		public string EncodeMethod(string input)
+		{
+			byte[] bytes = Encoding.ASCII.GetBytes(input);
+			byte[] results = new byte[bytes.Length];
+
+			int width = Mathf.FloorToInt(Mathf.Sqrt(bytes.Length));
+			int height = Mathf.CeilToInt(bytes.Length / width);
+
+
+		}
+
+		public string DecodeMethod(string input)
+		{
+			throw new NotImplementedException();
+		}
+	}
 }
 
 public interface IMethod
